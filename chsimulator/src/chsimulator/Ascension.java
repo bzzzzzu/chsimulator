@@ -61,7 +61,7 @@ public class Ascension {
 	long endoftime = Long.MAX_VALUE;
 	
 	long hze = 0;
-	boolean debug = false;
+	boolean debug = true;
 	
 	ancBonus abonus;
 	
@@ -324,7 +324,7 @@ public class Ascension {
 			}
 			
 			// Long zones debug, every boss zone
-			if (((progress.zone % 5) == 0) && (zonetime > 2000) && debug) {
+			if (((progress.zone % 5) == 0) && (zonetime > 2000) && debug && !debug) {
 				System.out.println("Zone: " + progress.zone
 						+ ", ttotal=" + progress.time / 1000
 						+ "s, t=" + zonetime
@@ -411,7 +411,7 @@ public class Ascension {
 				levelHeroes25(progress);
 			}
 			if ((progress.hero == 14) && (progress.level >= 1500) && (progress.level <= 2500)) {
-				progress.hero = 15;
+			progress.hero = 15;
 				progress.level = 9300;
 				levelHeroes25(progress);
 			}
@@ -423,6 +423,44 @@ public class Ascension {
 			if ((progress.hero == 16) && (progress.level >= 12600)) {
 				progress.hero = 14;
 				progress.level = 4900;
+				levelHeroes25(progress);
+			}
+			if ((progress.hero == 14) && (progress.level >= 9025)) {
+				// temp
+				abonus.bonusGold = abonus.bonusGold.multiply(BigDecimal.valueOf(1.5));
+				abonus.bonusGold = abonus.bonusGold.multiply(BigDecimal.valueOf(2));
+				progress.hero = 17;
+				progress.level = 25;
+				levelHeroes25(progress);
+			}
+			if ((progress.hero == 17) && (progress.level >= 17025)) {
+				progress.hero = 18;
+				progress.level = 25;
+				levelHeroes25(progress);
+			}
+			if ((progress.hero == 18) && (progress.level >= 34050)) {
+				// temp
+				abonus.idleBonusDamage = abonus.idleBonusDamage.multiply(BigDecimal.valueOf(1.5));
+				abonus.activeBonusDamage = abonus.activeBonusDamage.multiply(BigDecimal.valueOf(1.5));
+				progress.hero = 19;
+				progress.level = 25;
+				levelHeroes25(progress);
+			}
+			if ((progress.hero == 19) && (progress.level >= 68075)) {
+				// temp
+				abonus.idleBonusDamage = abonus.idleBonusDamage.multiply(BigDecimal.valueOf(1.25));
+				abonus.activeBonusDamage = abonus.activeBonusDamage.multiply(BigDecimal.valueOf(1.25));
+				abonus.idleBonusDamage = abonus.idleBonusDamage.multiply(BigDecimal.valueOf(1.25));
+				abonus.activeBonusDamage = abonus.activeBonusDamage.multiply(BigDecimal.valueOf(1.25));
+				abonus.idleBonusDamage = abonus.idleBonusDamage.multiply(BigDecimal.valueOf(1.5));
+				abonus.activeBonusDamage = abonus.activeBonusDamage.multiply(BigDecimal.valueOf(1.5));
+				progress.hero = 20;
+				progress.level = 25;
+				levelHeroes25(progress);
+			}
+			if ((progress.hero == 20) && (progress.level >= 136150)) {
+				progress.hero = 21;
+				progress.level = 25;
 				levelHeroes25(progress);
 			}
 		}		

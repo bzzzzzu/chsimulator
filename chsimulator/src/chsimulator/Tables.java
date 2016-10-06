@@ -6,10 +6,10 @@ import java.math.RoundingMode;
 
 public class Tables {
 	
-	public static BigDecimal[][] herocosts = new BigDecimal[17][200000];
-	public static BigDecimal[][] herocosts25 = new BigDecimal[17][200000];
-	public static BigDecimal[] zoneHP = new BigDecimal[200000];
-	public static BigDecimal[][] herodamage = new BigDecimal[17][200000];
+	public static BigDecimal[][] herocosts = new BigDecimal[22][300000];
+	public static BigDecimal[][] herocosts25 = new BigDecimal[22][300000];
+	public static BigDecimal[] zoneHP = new BigDecimal[300000];
+	public static BigDecimal[][] herodamage = new BigDecimal[22][300000];
 	
 	public static BigDecimal[] doraeffect = new BigDecimal[10000];
 	public static BigDecimal[] kumaeffect = new BigDecimal[10000];
@@ -22,30 +22,36 @@ public class Tables {
 	public static BigDecimal[] transsouls = new BigDecimal[100000];
 	
 	public static void precalcHeroCost() {
-		calcHeroCost(1, 100000);
-		calcHeroCost(2, 1e55);
-		calcHeroCost(3, 1e70);
-		calcHeroCost(4, 1e85);
-		calcHeroCost(5, 1e100);
-		calcHeroCost(6, 1e115);
-		calcHeroCost(7, 1e130);
-		calcHeroCost(8, 1e145);
-		calcHeroCost(9, 1e160);
-		calcHeroCost(10, 1e175);
-		calcHeroCost(11, 1e190);
-		calcHeroCost(12, 1e205);
-		calcHeroCost(13, 1e220);
-		calcHeroCost(14, 1e235);
-		calcHeroCost(15, 20000);
-		calcHeroCost(16, 4e12);
+		calcHeroCost(1, BigDecimal.valueOf(100000));
+		calcHeroCost(2, BigDecimal.valueOf(1e55));
+		calcHeroCost(3, BigDecimal.valueOf(1e70));
+		calcHeroCost(4, BigDecimal.valueOf(1e85));
+		calcHeroCost(5, BigDecimal.valueOf(1e100));
+		calcHeroCost(6, BigDecimal.valueOf(1e115));
+		calcHeroCost(7, BigDecimal.valueOf(1e130));
+		calcHeroCost(8, BigDecimal.valueOf(1e145));
+		calcHeroCost(9, BigDecimal.valueOf(1e160));
+		calcHeroCost(10, BigDecimal.valueOf(1e175));
+		calcHeroCost(11, BigDecimal.valueOf(1e190));
+		calcHeroCost(12, BigDecimal.valueOf(1e205));
+		calcHeroCost(13, BigDecimal.valueOf(1e220));
+		calcHeroCost(14, BigDecimal.valueOf(1e235));
+		calcHeroCost(15, BigDecimal.valueOf(20000));
+		calcHeroCost(16, BigDecimal.valueOf(4e12));
+		
+		calcHeroCost(17, BigDecimal.valueOf(1, -500));
+		calcHeroCost(18, BigDecimal.valueOf(1, -1000));
+		calcHeroCost(19, BigDecimal.valueOf(1, -2000));
+		calcHeroCost(20, BigDecimal.valueOf(1, -4000));
+		calcHeroCost(21, BigDecimal.valueOf(1, -8000));
 	}
 	
-	public static void calcHeroCost(int id, double base) {
-		BigDecimal cost = BigDecimal.valueOf(base);
+	public static void calcHeroCost(int id, BigDecimal base) {
+		BigDecimal cost = base;
 		BigDecimal costscale = BigDecimal.valueOf(1.07);
 
 		int i = 1;
-		while (i < 200000) {
+		while (i < 300000) {
 			herocosts[id][i] = cost;
 			
 			// Also populating 25 levels hiring table
@@ -63,7 +69,7 @@ public class Tables {
 		BigDecimal hp = BigDecimal.valueOf(10);
 		
 		int i = 1;
-		while (i < 200000) {
+		while (i < 300000) {
 			zoneHP[i] = hp;
 			hp = hp.multiply(Formulas.getZoneMult(i));
 			hp = hp.round(new MathContext(10, RoundingMode.HALF_DOWN));
@@ -76,7 +82,7 @@ public class Tables {
 		BigDecimal damage = BigDecimal.valueOf(3725).setScale(10);
 		herodamage[1][1] = damage;
 		int i = 1;
-		while (i < 199999) {
+		while (i < 299999) {
 			i++;
 			if ((i == 10) || (i == 25) || (i == 50)) {
 				damage = damage.multiply(BigDecimal.valueOf(2));
@@ -101,7 +107,7 @@ public class Tables {
 		damage = BigDecimal.valueOf(976).setScale(10);
 		herodamage[15][1] = damage;
 		i = 1;
-		while (i < 199999) {
+		while (i < 299999) {
 			i++;
 			if (i > 199) {
 				if ((i % 25) == 0) {
@@ -123,7 +129,7 @@ public class Tables {
 		damage = BigDecimal.valueOf(3.017e9).setScale(10);
 		herodamage[16][1] = damage;
 		i = 1;
-		while (i < 199999) {
+		while (i < 299999) {
 			i++;
 			if (i > 199) {
 				if ((i % 25) == 0) {
@@ -155,6 +161,12 @@ public class Tables {
 		precalcRangerDamage(12, BigDecimal.valueOf(4.546e173)); //max
 		precalcRangerDamage(13, BigDecimal.valueOf(3.349e186)); //gog
 		precalcRangerDamage(14, BigDecimal.valueOf(2.467e199)); //wep
+		
+		precalcRangerDamage(17, BigDecimal.valueOf(1820, -422)); //tsuchi
+		precalcRangerDamage(18, BigDecimal.valueOf(1341, -843)); //skogur
+		precalcRangerDamage(19, BigDecimal.valueOf(9885, -1675)); //moeru
+		precalcRangerDamage(20, BigDecimal.valueOf(7283, -3330)); //zilar
+		precalcRangerDamage(21, BigDecimal.valueOf(5366, -6627)); //madzi
 	}
 	
 	public static void precalcRangerDamage(int id, BigDecimal initial) {
@@ -162,7 +174,7 @@ public class Tables {
 		
 		herodamage[id][1] = damage;
 		int i = 1;
-		while (i < 199999) {
+		while (i < 299999) {
 			i++;
 			if ((id == 12) || (id == 13)) {
 				if ((i == 10) || (i == 25)) {
@@ -177,6 +189,58 @@ public class Tables {
 					damage = damage.multiply(BigDecimal.valueOf(3));
 				}
 				if (i == 100) {
+					damage = damage.multiply(BigDecimal.valueOf(3.5));
+				}
+			}
+			else if (id == 17) {
+				if (i == 1000) {
+					damage = damage.multiply(BigDecimal.valueOf(3.5));
+				}
+				if (i == 2000) {
+					damage = damage.multiply(BigDecimal.valueOf(2.5));
+				}
+			}
+			else if (id == 18) {
+				if (i == 1000) {
+					damage = damage.multiply(BigDecimal.valueOf(2));
+				}
+				if (i == 2000) {
+					damage = damage.multiply(BigDecimal.valueOf(2));
+				}
+				if (i == 4000) {
+					damage = damage.multiply(BigDecimal.valueOf(2));
+				}
+				if (i == 8000) {
+					damage = damage.multiply(BigDecimal.valueOf(2.5));
+				}
+			}
+			else if (id == 19) {
+				if (i == 1000) {
+					damage = damage.multiply(BigDecimal.valueOf(2));
+				}
+				if (i == 2000) {
+					damage = damage.multiply(BigDecimal.valueOf(2.5));
+				}
+				if (i == 4000) {
+					damage = damage.multiply(BigDecimal.valueOf(3));
+				}
+			}
+			else if (id == 20) {
+				if (i == 1000) {
+					damage = damage.multiply(BigDecimal.valueOf(11));
+				}
+			}
+			else if (id == 21) {
+				if (i == 1000) {
+					damage = damage.multiply(BigDecimal.valueOf(2));
+				}
+				if (i == 2000) {
+					damage = damage.multiply(BigDecimal.valueOf(2.5));
+				}
+				if (i == 4000) {
+					damage = damage.multiply(BigDecimal.valueOf(3));
+				}
+				if (i == 8000) {
 					damage = damage.multiply(BigDecimal.valueOf(3.5));
 				}
 			}
