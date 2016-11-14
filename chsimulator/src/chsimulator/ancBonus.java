@@ -10,6 +10,8 @@ public class ancBonus {
 	BigDecimal mammonBonus = BigDecimal.valueOf(0);
 	BigDecimal siyaBonus = BigDecimal.valueOf(0);
 	BigDecimal libBonus = BigDecimal.valueOf(0);
+	BigDecimal tinBonus = BigDecimal.valueOf(0);
+	BigDecimal tinBonusXyl = BigDecimal.valueOf(0);
 	BigDecimal solomonBonus = BigDecimal.valueOf(0);
 	BigDecimal fragsBonus = BigDecimal.valueOf(0);
 	BigDecimal bhaalBonus = BigDecimal.valueOf(0);
@@ -35,6 +37,7 @@ public class ancBonus {
 		fragsBonus = Formulas.getFragsEffect(a.Frags);
 		bhaalBonus = Formulas.getBhaalEffect(a.Bhaal);
 		juggBonus = Formulas.getJuggEffect(a.Jugg);
+		tinBonus = Formulas.getTinEffect(a.Tin);
 		
 		idleBonusDamage = siyaBonus;
 		idleBonusDamage = idleBonusDamage.multiply(BigDecimal.valueOf(1 + a.Xyl));
@@ -66,6 +69,10 @@ public class ancBonus {
 		idleBonusGold = libBonus;
 		idleBonusGold = idleBonusGold.multiply(BigDecimal.valueOf(1 + a.Xyl));
 		idleBonusGold = idleBonusGold.round(new MathContext(10, RoundingMode.HALF_DOWN));
+		
+		tinBonusXyl = tinBonus.multiply(BigDecimal.valueOf(1 + a.Xyl));
+		tinBonusXyl = tinBonusXyl.add(BigDecimal.valueOf(1));
+		idleBonusGold = idleBonusGold.multiply(tinBonusXyl);
 		
 		// Chests are averaging
 		bonusGold = mimzeeBonus.add(BigDecimal.valueOf(10));

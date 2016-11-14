@@ -115,7 +115,7 @@ public class Transcension {
 		// Experimental setting to favor longer transcensions for humans
 		double timevalue = 1.05;
 		
-		while ((failedASimprovements < 5) && (numberOfAscensions < 100)) {
+		while ((failedASimprovements < 5) && (numberOfAscensions < 10000)) {
 			// Initializing ascension
 			AscSettings set = new AscSettings(currentHS, AS, TP, HSlimit, Xyl, Chor, Phan, Borb, Pony, gilds, 0, currentstat.zone);
 			// If you dont want to use idle/active builds, change to 0 or comment

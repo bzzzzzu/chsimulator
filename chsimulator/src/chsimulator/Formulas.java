@@ -275,6 +275,15 @@ public class Formulas {
 		return bigeffect;
 	}
 	
+	public static BigDecimal getTinEffect(BigDecimal level) {
+		BigDecimal effect = level.multiply(BigDecimal.valueOf(10));
+		
+		BigDecimal bigeffect = effect.setScale(10, RoundingMode.HALF_DOWN);
+		bigeffect = bigeffect.divide(BigDecimal.valueOf(100).setScale(2));
+		
+		return bigeffect;
+	}
+	
 	public static BigDecimal getSolomonEffect(BigDecimal level) {
 		BigDecimal effect = level.subtract(BigDecimal.valueOf(80));
 		effect = effect.add(BigDecimal.valueOf(200));

@@ -16,6 +16,7 @@ public class Ascension {
 	BigDecimal Mimzee = BigDecimal.valueOf(0);
 	BigDecimal Mammon = BigDecimal.valueOf(0);
 	BigDecimal Morg = BigDecimal.valueOf(0);
+	BigDecimal Tin = BigDecimal.valueOf(0);
 	
 	BigDecimal Solomon = BigDecimal.valueOf(0);
 	long Atman = 0;
@@ -137,8 +138,11 @@ public class Ascension {
 		BigDecimal siya2cost = Siya.multiply(Siya).round(new MathContext(10, RoundingMode.HALF_DOWN));
 		BigDecimal lib3cost = Lib.multiply(Lib).round(new MathContext(10, RoundingMode.HALF_DOWN));
 		lib3cost = lib3cost.multiply(BigDecimal.valueOf(1.5));
-		BigDecimal morgcost = Morg;		
-		BigDecimal costsidle = siya2cost.add(lib3cost).add(morgcost);
+		BigDecimal morgcost = Morg;
+		BigDecimal tincost = Formulas.pow25(Tin);
+		tincost = tincost.divide(BigDecimal.valueOf(2.5), 5, RoundingMode.HALF_DOWN);
+		tincost = tincost.round(new MathContext(10, RoundingMode.HALF_DOWN));
+		BigDecimal costsidle = siya2cost.add(lib3cost).add(morgcost).add(tincost);
 		
 		// Active
 		BigDecimal frags2cost = Frags.multiply(Frags);
@@ -205,9 +209,9 @@ public class Ascension {
 	}
 	
 	private void allocateIdleHybrid(BigDecimal idlesouls, double ratio) {
-		// Total idle/active cost: 2.286n^2 + n^2 + 1.4n^2 * a^2
+		// Total idle/active cost: 2.286n^2 + n^2 + 1.4n^2 * a^2 
 		double morgratio = 1;
-		double idleratio = 2.286;
+		double idleratio = 2.686;
 		double activeratio = 1.4;
 		if (ratio > 1) {
 			morgratio = ratio * ratio; 
@@ -222,6 +226,7 @@ public class Ascension {
 		Lib = idlesouls.multiply(BigDecimal.valueOf(0.926)).round(new MathContext(10, RoundingMode.HALF_DOWN));
 		Mimzee = idlesouls.multiply(BigDecimal.valueOf(0.926)).round(new MathContext(10, RoundingMode.HALF_DOWN));
 		Mammon = idlesouls.multiply(BigDecimal.valueOf(0.926)).round(new MathContext(10, RoundingMode.HALF_DOWN));
+		Tin = Formulas.pow08(Siya); 
 		
 		Morg = idlesouls.multiply(idlesouls).round(new MathContext(10, RoundingMode.HALF_DOWN));
 		if (ratio > 1) {
