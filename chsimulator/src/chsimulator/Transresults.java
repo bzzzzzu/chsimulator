@@ -75,7 +75,7 @@ public class Transresults {
 					+ "\t" + BigDecimal.valueOf(Pony).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + BigDecimal.valueOf(ASgaindayhuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + BigDecimal.valueOf(timeh).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
-					+ "\t" + BigDecimal.valueOf(HS).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
+					+ "\t" + BigDecimal.valueOf(HShuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + BigDecimal.valueOf(ASgainhuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + zonehuman
 					+ "\t" + ascensionshuman
@@ -92,7 +92,7 @@ public class Transresults {
 					+ "\t" + BigDecimal.valueOf(Pony).round(new MathContext(5, RoundingMode.HALF_DOWN)).longValue()
 					+ "\t" + BigDecimal.valueOf(ASgaindayhuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + BigDecimal.valueOf(timeh).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
-					+ "\t" + BigDecimal.valueOf(HS).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
+					+ "\t" + BigDecimal.valueOf(HShuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + BigDecimal.valueOf(ASgainhuman).round(new MathContext(5, RoundingMode.HALF_DOWN)).doubleValue()
 					+ "\t" + zonehuman
 					+ "\t" + ascensionshuman
