@@ -64,9 +64,9 @@ public class ASbuild {
 			double lost = 0;
 			double movechor = move;
 			double movephan = move;
-			if (out1 == 2) { move = Math.ceil((newbuild.Chor - 1) / 10); }
+			if (out1 == 2) { move = Math.ceil(newbuild.Chor / 10); }
 			if (out2 == 2) { move = Math.ceil((newbuild.Chor + 1) / 10); }
-			if (out1 == 3) { move = newbuild.Phan - 1; }
+			if (out1 == 3) { move = newbuild.Phan; }
 			if (out2 == 3) { move = newbuild.Phan + 1; }
 			if (move < 1) { move = 1; }
 			if (out1 == 1) {
