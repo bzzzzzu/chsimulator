@@ -14,7 +14,9 @@ public class Init {
 		// Main optimization loop
 		// Hybrid enabled by default, change in Transcension
 		Suggestion sugg = new Suggestion();
-		for (int i = 80; i < 201; i++) {
+		for (int i = 10; i < 51; i++) {
+			if (i == 10) { sugg = new Suggestion(75, 0, 0, 0, 25); }
+			if (i == 20) { sugg = new Suggestion(50, 0, 0, 0, 50); }
 			if (i == 30) { sugg = new Suggestion(25, 0, 0, 0, 75); }
 			if (i == 40) { sugg = new Suggestion(20, 10, 10, 0, 60); }
 			if (i == 60) { sugg = new Suggestion(12, 13, 30, 0, 45); }
@@ -34,7 +36,7 @@ public class Init {
 		// Another version, starts from rough suggestion, prone to being stuck in local maximums
 		Optimizer opt = new Optimizer(255);
 		opt.suggest(new Suggestion(10,10,30,35,15));
-		opt.optimize();
+		//opt.optimize();
 		
 		// Simulating a Transcension with required parameters to check how a single build performs
 		/*Transcension trans = new Transcension(77);

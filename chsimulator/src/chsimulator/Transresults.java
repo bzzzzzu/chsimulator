@@ -57,7 +57,7 @@ public class Transresults {
 	public void print() {
 		System.out.println("Transcension final resuls (optimal) - AS: " + ASgain + ", time: " + (time / 1000 / 3600) + "h, AS/day: " + ASgainday + ", Ascensions: " + ascensions + ", HZE: " + zone);
 		System.out.println("Transcension final resuls (human) - AS: " + ASgainhuman + ", time: " + (timehuman / 1000 / 3600) + "h, AS/day: " + ASgaindayhuman + ", Ascensions: " + ascensionshuman + ", HZE: " + zonehuman);
-		System.out.println("Build - AS: " + AS + ", Xyl: " + Xyl + ", Chor: " + Chor + ", Phan: " + Phan + ", Borb: " + Borb + ", Pony: " + Pony);
+		System.out.println("Build - AS: " + AS + ", Xyl: " + Xyl + ", Chor: " + Chor + ", Phan: " + Phan + ", Borb: " + Borb + ", Pony: " + Pony + ", Total spent: " + (Xyl + ((Math.floor(Chor / 10) + 1) * (Math.floor(Chor / 10) * 5 + (Chor % 10))) + Phan * (Phan + 1) / 2 + Borb + Pony));
 	}
 
 	public void write(int i) {

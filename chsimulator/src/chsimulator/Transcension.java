@@ -96,8 +96,18 @@ public class Transcension {
 	public Transresults simulateTrans() {
 		Tables.precalcTransPower(TP, Phan);
 		
-		// Base starting time for simulation from actual practice (3 hours)
-		long totaltime = (long) ((3600000 * 15) / (Xyl + 2));
+		// Base starting time for simulation from actual practice (2 hours with extra idle ancient)
+		long totaltime = (long) ((3600000 * 10) / (Xyl + 2));
+		
+		// Not really possible for low AS to have all that assumptions we have for high AS
+		double extratime = 3600000 * 12;
+		if ((AS >= 10) && (AS < 50)) {
+			extratime = extratime * ((50 - (double) AS) / 40);
+			totaltime = totaltime + (long) extratime;
+		}
+		
+		// Autoclicker starting time (2 clickers)
+		//long clickertime = (long) ((3600000 * 10) / (2 + 1 * 2));
 		
 		// Starting parameters for first ascension in simulation, assuming 2 ascensions before that
 		BigDecimal currentHS = BigDecimal.valueOf(1000);
@@ -115,12 +125,12 @@ public class Transcension {
 		// Experimental setting to favor longer transcensions for humans
 		double timevalue = 1.05;
 		
-		while ((failedASimprovements < 5) && (numberOfAscensions < 10000)) {
+		while ((failedASimprovements < 5) && (numberOfAscensions < 100)) {
 			// Initializing ascension
 			AscSettings set = new AscSettings(currentHS, AS, TP, HSlimit, Xyl, Chor, Phan, Borb, Pony, gilds, 0, currentstat.zone);
 			// If you dont want to use idle/active builds, change to 0 or comment
 			if (currentHS.compareTo(BigDecimal.valueOf(1e7)) > 0) {
-				set.strat = 1;
+				//set.strat = 1;
 			}
 			if (currentHS.compareTo(BigDecimal.valueOf(1e14)) > 0) {
 				//set.strat = 2;
