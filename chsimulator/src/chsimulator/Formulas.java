@@ -134,12 +134,15 @@ public class Formulas {
 			
 			// We calculate in amount of critical clicks you need to kill the mob
 			double clicks = totalhp.divide(currentdamage, 20, RoundingMode.HALF_DOWN).doubleValue();
-			clicks = Math.ceil(clicks);
 			
 			// Not every click is critical, increasing average clicks accordingly
-			// 100ms as for 10 clicks per second
-			double timepermob = clicks / asc.luckychance * 100;
 			double totalclicks = clicks / asc.luckychance;
+			
+			// Temporary estimation of new autoclickers mechanics, with 2 autoclickers
+			double timepermob = clicks / asc.luckychance * 1000 / 20;
+			if (timepermob < 33) {
+				timepermob = 33;
+			}
 			
 			// TODO: this probably deserves its own spot in ancBonus
 			BigDecimal mobskuma = BigDecimal.valueOf(10).subtract(getKumaEffect(asc.Kuma));
